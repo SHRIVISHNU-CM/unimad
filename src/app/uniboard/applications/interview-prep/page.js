@@ -4,18 +4,30 @@ import React, { useState } from 'react'
 import InterviewCards from '@/components/interviewCards'
 import InputField from '@/components/inputField'
 import { useRouter } from 'next/navigation'
+import { IoMdClose } from "react-icons/io";
+
+//Questions
+const Questions = [
+  { id: 1, name: "Question Type 1" },
+  { id: 2, name: "Question Type 1" },
+  { id: 3, name: "Question Type 1" },
+
+]
 
 function page() {
   const [open, SetOpen] = useState(false)
   const router = useRouter()
+  const [role, setRole] = useState("")
+  const [company, SetCompany] = useState("")
 
-  //Questions
-  const Questions = [
-    { id: 1, name: "Question Type 1" },
-    { id: 2, name: "Question Type 1" },
-    { id: 3, name: "Question Type 1" },
+  //Handle Start
+  const StartInterview = () => {
+    const Info = encodeURIComponent(
+      JSON.stringify({ role, company })
+    )
+    router.push(`/uniboard/applications/interview-prep/interview?info=${Info}`)
+  }
 
-  ]
   return (
     <>
       <div className='w-full'>
@@ -34,29 +46,38 @@ function page() {
       </div>
       {
         open && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-40">
             <div className="bg-white p-6 rounded-lg relative shadow-lg w-[500px] h-[427px]">
               <button
                 onClick={() => SetOpen(false)}
                 className="text-gray-600 absolute top-[16px] left-[476px]">
-                ✕
+                <IoMdClose/>
               </button>
               <h2 className="text-[16px]  font-[600] text-center">Interview Prep</h2>
               <div className="mt-4  ">
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   <div className="col-span-1">
                     <label className="text-[12px] font-[400] text-[#346DE0] ">Role</label>
-                    <input type="text" className="w-full border p-2 rounded border-[#346DE0]" />
+                    <input type="text" className="w-full border p-2 rounded border-[#346DE0]"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                    />
                   </div>
 
                   <div className="col-span-1">
                     <label className="text-[12px] font-[400] text-[#D0D0D0]">Company</label>
-                    <input type="text" className="w-full border p-2 rounded" />
+                    <input
+                      type="text"
+                      value={company}
+                      onChange={(e) => SetCompany(e.target.value)}
+                      className="w-full border p-2 rounded" />
                   </div>
 
                   <div className="col-span-2">
                     <label className="text-[12px] font-[400] text-[#D0D0D0]">Job Description</label>
-                    <textarea className="w-full border p-2 rounded"></textarea>
+                    <textarea
+                      rows={5}
+                      className="w-full border p-2 rounded"></textarea>
                   </div>
                 </div>
                 <div>
@@ -83,7 +104,7 @@ function page() {
                 <button
                   className="mt-4 w-[148px] h-[38px] rounded-[4px] bg-blue-600 text-white px-[24px] py-[10px] text-[14px] font-[500] float-right"
 
-                  onClick={() => router.push("/uniboard/applications/interview-prep/interview")}
+                  onClick={StartInterview}
                 >
                   Start Interview
                 </button>
