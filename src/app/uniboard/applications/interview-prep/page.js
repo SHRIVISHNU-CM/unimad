@@ -31,9 +31,9 @@ function page() {
   return (
     <>
       <div className='w-full'>
-        <h2 className='text-[#346DE0]'>Interview Prep</h2>
-        <div className='flex gap-6'>
-          <button onClick={() => SetOpen(true)} className='bg-[#346DE01A] hover:bg-[#395ea81a] rounded-[4px] w-[356px] h-[73px] py-[10px] pr-[24px] pl-[16px]'>
+        <h2 className='text-[#346DE0] mt-[64px]'>Interview Prep</h2>
+        <div className='flex gap-6 mt-[147px]'>
+          <button onClick={() => SetOpen(true)} className='bg-[#346DE01A] hover:bg-[#395ea81a] rounded-[4px] w-[356px] h-[73px] py-[10px] pr-[24px] pl-[16px] text-[#346DE0] text-[14px]'>
             + Start new Interview
           </button>
           <div className='flex gap-6'>
