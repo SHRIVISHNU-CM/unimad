@@ -14,8 +14,8 @@ function InterviewCards({ title, company }) {
         if (!isMounted) return null;
     return (
         <>
-            <div className="bg-[#FFFFFF] rounded-[4px] w-[356px] h-[73px] py-[10px] pr-[24px] pl-[16px] flex justify-between items-center shadow-lg">
-                <div className=''>
+            <div className={`bg-[#FFFFFF] rounded-[4px] w-[357px]  h-[73px] py-[10px] pr-[24px] pl-[16px] flex justify-between items-center shadow-lg`}>
+                <div >
                     <h3 className="text-[14px] font-[600]">{title}</h3>
                     <p className="text-[#808080] text-[14px] font-[400]">{company}</p>
                 </div>
