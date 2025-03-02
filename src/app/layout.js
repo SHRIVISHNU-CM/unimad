@@ -5,6 +5,9 @@ import SlideBar from "@/components/sidebar";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <title>Unimad</title>
+      </head>
       <body
         className="flex gap-2"
       >
